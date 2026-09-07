@@ -1,0 +1,3 @@
+broker,market,symbol,quantity,currency,name
+Firstrade,美股,AAPL,1,USD,Apple（範例）
+國泰證券,台股,006208.TW,10,TWD,富邦台50（範例）
