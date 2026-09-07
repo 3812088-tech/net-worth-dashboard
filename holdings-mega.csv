@@ -1,0 +1,14 @@
+broker,market,symbol,quantity,currency,name
+兆豐證券,台股,006208.TW,525,TWD,富邦台50
+兆豐證券,台股,006208.TW,2000,TWD,富邦台50（質押）
+兆豐證券,台股,00662.TW,1000,TWD,富邦NASDAQ-100（質押）
+兆豐證券,台股,3711.TW,14,TWD,日月光投控
+兆豐證券,台股,5346.TW,2423,TWD,力成
+兆豐證券,美股,GOOG,20,USD,Alphabet
+兆豐證券,美股,META,13,USD,Meta Platforms
+兆豐證券,美股,NFLX,4,USD,Netflix
+兆豐證券,美股,ORCL,4,USD,Oracle
+兆豐證券,美股,PLTR,25,USD,Palantir
+兆豐證券,美股,SE,23,USD,Sea Ltd
+兆豐證券,美股,SOFI,11,USD,SoFi Technologies
+兆豐證券,美股,TSLA,9,USD,Tesla

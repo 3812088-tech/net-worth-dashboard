@@ -1,0 +1,35 @@
+broker,market,symbol,quantity,currency,name
+Firstrade,美股,PLTR,192,USD,Palantir
+Firstrade,美股,SE,147,USD,Sea Ltd
+Firstrade,美股,TSLA,23,USD,Tesla
+Firstrade,美股,SPCX,54.75463,USD,SPCX ETF
+Firstrade,美股,GOOG,17,USD,Alphabet
+Firstrade,美股,META,5,USD,Meta Platforms
+Firstrade,美股,NVDA,10.16192,USD,NVIDIA
+Firstrade,美股,MP,40,USD,MP Materials
+國泰證券,美股,AAPL,1.37749,USD,Apple
+國泰證券,美股,AMZN,1.19881,USD,Amazon
+國泰證券,美股,GOOGL,1.61418,USD,Alphabet
+國泰證券,美股,INDA,2.8069,USD,iShares MSCI India ETF
+國泰證券,美股,META,0.45284,USD,Meta Platforms
+國泰證券,美股,MSFT,0.90833,USD,Microsoft
+國泰證券,美股,MU,0.02959,USD,Micron
+國泰證券,美股,NFLX,2.18898,USD,Netflix
+國泰證券,美股,NVDA,2.60727,USD,NVIDIA
+國泰證券,美股,SPCX,0.14442,USD,SPCX ETF
+國泰證券,美股,TSLA,1.07873,USD,Tesla
+國泰證券,台股,006208.TW,18,TWD,富邦台50
+國泰證券,台股,00662.TW,130,TWD,富邦NASDAQ-100
+兆豐證券,台股,006208.TW,525,TWD,富邦台50
+兆豐證券,台股,006208.TW,2000,TWD,富邦台50（質押）
+兆豐證券,台股,00662.TW,1000,TWD,富邦NASDAQ-100（質押）
+兆豐證券,台股,3711.TW,14,TWD,日月光投控
+兆豐證券,台股,5346.TW,2423,TWD,力成
+兆豐證券,美股,GOOG,20,USD,Alphabet
+兆豐證券,美股,META,13,USD,Meta Platforms
+兆豐證券,美股,NFLX,4,USD,Netflix
+兆豐證券,美股,ORCL,4,USD,Oracle
+兆豐證券,美股,PLTR,25,USD,Palantir
+兆豐證券,美股,SE,23,USD,Sea Ltd
+兆豐證券,美股,SOFI,11,USD,SoFi Technologies
+兆豐證券,美股,TSLA,9,USD,Tesla
