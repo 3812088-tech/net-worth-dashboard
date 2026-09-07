@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>淨值儀表板 · Net Worth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>淨值儀表板</h1>
+        <p class="subtitle">多券商持股 · 台股 / 美股報價</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="btn-refresh" class="btn primary">更新報價</button>
+        <button type="button" id="btn-add" class="btn">新增持股</button>
+      </div>
+    </header>
+
+    <div id="demo-banner" class="banner demo" role="status">
+      ⚠ 目前為<strong>範例資料</strong>。已匯入真實持股時此提示會消失；尚缺 Firstrade／國泰可再貼上來。
+    </div>
+
+    <section class="card summary-card">
+      <div class="summary-grid">
+        <div class="stat">
+          <div class="stat-label">總淨值 (TWD)</div>
+          <div class="stat-value" id="total-twd">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">總淨值 (USD)</div>
+          <div class="stat-value" id="total-usd">—</div>
+        </div>
+        <div class="stat fx-stat">
+          <div class="stat-label">USD/TWD 匯率</div>
+          <div class="fx-row">
+            <input type="number" id="fx-rate" step="0.01" min="0" class="fx-input" />
+            <button type="button" id="btn-fx" class="btn small">抓取匯率</button>
+          </div>
+          <div class="stat-meta" id="fx-meta">尚未取得</div>
+        </div>
+      </div>
+      <div class="breakdown" id="breakdown"></div>
+      <div class="status-bar">
+        <span id="price-status">尚未更新報價</span>
+        <span id="save-status"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>持股明細</h2>
+        <div class="section-actions">
+          <button type="button" id="btn-reset-demo" class="btn small ghost">還原範例</button>
+          <button type="button" id="btn-clear" class="btn small ghost danger">清空</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="holdings-table">
+          <thead>
+            <tr>
+              <th>券商</th>
+              <th>市場</th>
+              <th>代號</th>
+              <th>名稱</th>
+              <th>數量</th>
+              <th>幣別</th>
+              <th>現價</th>
+              <th>市值</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="holdings-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>匯入持股</h2>
+      <p class="hint">格式：<code>broker,market,symbol,quantity,currency</code>（可含表頭）。市場可用：台股 / 美股 / 其他</p>
+      <textarea id="import-text" rows="5" placeholder="Firstrade,美股,AAPL,10,USD&#10;國泰證券,台股,2330.TW,100,TWD"></textarea>
+      <div class="row-actions">
+        <button type="button" id="btn-import-replace" class="btn primary">匯入並取代</button>
+        <button type="button" id="btn-import-append" class="btn">匯入並附加</button>
+      </div>
+      <p class="hint muted" id="import-msg"></p>
+    </section>
+
+    <footer class="footer">
+      <p>資料僅存於此瀏覽器的 localStorage · 報價經本地代理轉發 Yahoo Finance · 不保證即時或準確</p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
