@@ -1,10 +1,10 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "networth.holdings.v15";
-  const PRICES_KEY = "networth.prices.v15";
-  const FX_KEY = "networth.fx.v15";
-  const DEMO_FLAG_KEY = "networth.isDemo.v15";
+  const STORAGE_KEY = "networth.holdings.v16";
+  const PRICES_KEY = "networth.prices.v16";
+  const FX_KEY = "networth.fx.v16";
+  const DEMO_FLAG_KEY = "networth.isDemo.v16";
 
   const BROKERS = ["Firstrade", "國泰證券", "兆豐證券"];
   const MARKETS = ["台股", "美股", "其他"];
@@ -41,6 +41,7 @@
     { id: uid(), broker: "Firstrade", market: "美股", symbol: "MP", name: "MP Materials", quantity: 46, currency: "USD" },
     { id: uid(), broker: "Firstrade", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 8, currency: "USD" },
     { id: uid(), broker: "Firstrade", market: "美股", symbol: "MSFT", name: "Microsoft", quantity: 3.16934, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "其他", symbol: "CASH-USD", name: "融資借款（2026-10-09 推算：帳戶淨值 60,925.04 − 持股市值）", quantity: -24249.70, currency: "USD" },
     { id: uid(), broker: "國泰證券", market: "美股", symbol: "AAPL", name: "Apple", quantity: 1.40726, currency: "USD" },
     { id: uid(), broker: "國泰證券", market: "美股", symbol: "AMZN", name: "Amazon", quantity: 1.23905, currency: "USD" },
     { id: uid(), broker: "國泰證券", market: "美股", symbol: "GOOGL", name: "Alphabet", quantity: 1.64342, currency: "USD" },
@@ -263,7 +264,7 @@ function loadState() {
           <td><select data-f="market">${optionHtml(MARKETS, h.market)}</select></td>
           <td><input type="text" data-f="symbol" value="${escapeAttr(h.symbol)}" placeholder="2330.TW" /></td>
           <td><input type="text" data-f="name" value="${escapeAttr(h.name || "")}" placeholder="選填" /></td>
-          <td><input type="number" data-f="quantity" value="${escapeAttr(h.quantity)}" min="0" step="any" /></td>
+          <td><input type="number" data-f="quantity" value="${escapeAttr(h.quantity)}" step="any" /></td>
           <td><select data-f="currency">${optionHtml(CURRENCIES, h.currency)}</select></td>
           <td class="cell-price">${priceCell}</td>
           <td class="cell-mv">${mvCell}</td>
