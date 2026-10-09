@@ -1,10 +1,10 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "networth.holdings.v13";
-  const PRICES_KEY = "networth.prices.v13";
-  const FX_KEY = "networth.fx.v13";
-  const DEMO_FLAG_KEY = "networth.isDemo.v13";
+  const STORAGE_KEY = "networth.holdings.v14";
+  const PRICES_KEY = "networth.prices.v14";
+  const FX_KEY = "networth.fx.v14";
+  const DEMO_FLAG_KEY = "networth.isDemo.v14";
 
   const BROKERS = ["Firstrade", "國泰證券", "兆豐證券"];
   const MARKETS = ["台股", "美股", "其他"];
@@ -59,7 +59,7 @@
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "5346.TW", name: "力成", quantity: 2423, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "AVGO", name: "Broadcom", quantity: 6, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 12, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 11, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 16, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 1, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 9, currency: "USD" },
   ];
