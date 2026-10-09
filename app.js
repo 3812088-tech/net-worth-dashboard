@@ -589,6 +589,35 @@ function loadState() {
     };
   }
 
+  async function fetchSnapshot() {
+    const res = await fetch("./prices-snapshot.json?t=" + Date.now());
+    if (!res.ok) throw new Error("snapshot HTTP " + res.status);
+    return res.json();
+  }
+
+  function quotesFromSnapshot(snap, symbols) {
+    const quotes = {};
+    const errors = {};
+    for (const sym of symbols) {
+      if (snap.quotes && snap.quotes[sym] && snap.quotes[sym].price != null) {
+        quotes[sym] = {
+          symbol: sym,
+          price: snap.quotes[sym].price,
+          currency: snap.quotes[sym].currency || "",
+          name: snap.quotes[sym].name || sym,
+        };
+      } else {
+        errors[sym] = (snap.errors && snap.errors[sym]) || "snapshot 無此代號";
+      }
+    }
+    return {
+      quotes,
+      errors,
+      fromSnapshot: true,
+      updatedAt: snap.updatedAt || null,
+    };
+  }
+
   async function fetchQuotesPayload(symbols) {
     if (isLocalApiHost()) {
       const url = "/api/quotes?symbols=" + encodeURIComponent(symbols.join(","));
@@ -597,7 +626,15 @@ function loadState() {
       if (!res.ok) throw new Error(data.error || res.statusText);
       return { quotes: data.quotes || {}, errors: data.errors || {} };
     }
-    return fetchQuotesViaProxy(symbols);
+    try {
+      const live = await fetchQuotesViaProxy(symbols);
+      const ok = Object.keys(live.quotes || {}).length;
+      if (ok > 0) return live;
+    } catch (_) {
+      /* fall through to committed snapshot */
+    }
+    const snap = await fetchSnapshot();
+    return quotesFromSnapshot(snap, symbols);
   }
 
   async function fetchFxPayload() {
@@ -607,7 +644,18 @@ function loadState() {
       if (!res.ok || data.error) throw new Error(data.error || res.statusText);
       return data;
     }
-    return fetchFxViaProxy();
+    try {
+      return await fetchFxViaProxy();
+    } catch (_) {
+      const snap = await fetchSnapshot();
+      if (!snap.fx || snap.fx.rate == null) throw new Error("snapshot 無匯率");
+      return {
+        pair: snap.fx.pair || "USD/TWD",
+        rate: snap.fx.rate,
+        source: (snap.fx.source || "snapshot") + " · " + (snap.updatedAtIso || ""),
+        name: snap.fx.name,
+      };
+    }
   }
 
   async function refreshFx() {
@@ -680,11 +728,14 @@ function loadState() {
 
       savePrices();
       saveHoldings();
-      priceStatusEl.textContent = `報價更新完成：成功 ${ok}、失敗 ${fail} · ${fmtTime(now)}`;
+      const snapNote = data.fromSnapshot
+        ? `（使用 repo 快照${data.updatedAt ? " · " + fmtTime(data.updatedAt) : ""}）`
+        : "";
+      priceStatusEl.textContent = `報價更新完成：成功 ${ok}、失敗 ${fail} · ${fmtTime(now)}` + snapNote;
       if (fail && ok === 0) {
         priceStatusEl.textContent += isLocalApiHost()
           ? "（全部失敗，請確認已用本地 server.py 開啟，而非直接開 HTML）"
-          : "（全部失敗：靜態站 CORS proxy／Yahoo 可能暫時不可用，可改用本機 python3 server.py）";
+          : "（全部失敗：CORS proxy 與 prices-snapshot.json 都不可用）";
       }
     } catch (err) {
       priceStatusEl.textContent =

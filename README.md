@@ -2,7 +2,7 @@
 
 簡單的單頁淨值儀表板：可編輯多券商持股、透過 Yahoo Finance 抓取台股／美股現價，並以 TWD／USD 顯示總淨值。
 
-> **隱私提醒**：本 repo 為 **private**。`app.js` 內嵌真實持股（`USER_HOLDINGS`），資料也會存在瀏覽器 `localStorage`。請勿改為公開、勿把 token／密碼寫進程式碼；清除網站資料會讓本地快取消失。
+> **隱私提醒**：本 repo 目前為 **public**（使用者同意公開持股）。`app.js` 內嵌真實持股（`USER_HOLDINGS`），資料也會存在瀏覽器 `localStorage`。勿把 token／密碼寫進程式碼；清除網站資料會讓本地快取消失。
 
 ## GitHub Pages（靜態託管）
 
@@ -11,7 +11,7 @@
 - `https://3812088-tech.github.io/net-worth-dashboard/`
   （若 repo 名稱為 `net-worth-dashboard-tw`，路徑請改為對應名稱）
 
-靜態 Pages **沒有** `server.py` 的 `/api/*`。前端會在非 localhost 環境改走 CORS proxy 抓 Yahoo chart JSON，功能與本地代理對齊；proxy 偶發失敗時可改用下方本機伺服器。
+靜態 Pages **沒有** `server.py` 的 `/api/*`。前端會先試 CORS proxy；失敗時改讀同目錄的 `prices-snapshot.json`（由 `scripts/update_prices.py` 或 GitHub Actions 更新）。本機請用下方 `server.py`。
 
 > 免費方案的 **private** repo 通常無法開 GitHub Pages；若啟用失敗，請改用本機 `server.py`，或升級方案後再開 Pages。
 
@@ -66,7 +66,7 @@ Firstrade,美股,AAPL,10,USD
 - 依券商、依市場小計；總淨值 TWD + USD
 - 匯率可自動抓取，失敗時可手動覆寫
 - 報價失敗會顯示錯誤，並沿用上次成功快取（不會捏造現價）
-- localhost → `/api/*`；GitHub Pages 等靜態站 → CORS proxy + Yahoo chart
+- localhost → `/api/*`；GitHub Pages → CORS proxy，失敗則用 `prices-snapshot.json`
 
 ## 限制
 

@@ -1,0 +1,135 @@
+{
+  "updatedAt": 1791531745926,
+  "updatedAtIso": "2026-10-09T15:42:25+0800",
+  "fx": {
+    "pair": "USD/TWD",
+    "rate": 31.912,
+    "source": "Yahoo Finance USDTWD=X",
+    "name": "USD/TWD"
+  },
+  "quotes": {
+    "006208.TW": {
+      "price": 263.4,
+      "currency": "TWD",
+      "name": "Fubon FTSE TWSE Taiwan 50 ETF",
+      "fetchedAt": 1791531743375
+    },
+    "00662.TW": {
+      "price": 127.3,
+      "currency": "TWD",
+      "name": "Fubon NASDAQ-100 Index ETF",
+      "fetchedAt": 1791531743492
+    },
+    "3711.TW": {
+      "price": 744.0,
+      "currency": "TWD",
+      "name": "ASE Technology Holding Co., Ltd.",
+      "fetchedAt": 1791531743617
+    },
+    "AAPL": {
+      "price": 340.42,
+      "currency": "USD",
+      "name": "Apple Inc.",
+      "fetchedAt": 1791531743864
+    },
+    "AMZN": {
+      "price": 254.06,
+      "currency": "USD",
+      "name": "Amazon.com, Inc.",
+      "fetchedAt": 1791531743942
+    },
+    "GOOG": {
+      "price": 344.86,
+      "currency": "USD",
+      "name": "Alphabet Inc.",
+      "fetchedAt": 1791531744054
+    },
+    "GOOGL": {
+      "price": 348.29,
+      "currency": "USD",
+      "name": "Alphabet Inc.",
+      "fetchedAt": 1791531744172
+    },
+    "INDA": {
+      "price": 45.56,
+      "currency": "USD",
+      "name": "iShares MSCI India ETF",
+      "fetchedAt": 1791531744297
+    },
+    "META": {
+      "price": 720.89,
+      "currency": "USD",
+      "name": "Meta Platforms, Inc.",
+      "fetchedAt": 1791531744419
+    },
+    "MP": {
+      "price": 46.14,
+      "currency": "USD",
+      "name": "MP Materials Corp.",
+      "fetchedAt": 1791531744553
+    },
+    "MSFT": {
+      "price": 522.61,
+      "currency": "USD",
+      "name": "Microsoft Corporation",
+      "fetchedAt": 1791531744712
+    },
+    "MU": {
+      "price": 1035.84,
+      "currency": "USD",
+      "name": "Micron Technology, Inc.",
+      "fetchedAt": 1791531744850
+    },
+    "NFLX": {
+      "price": 71.57,
+      "currency": "USD",
+      "name": "Netflix, Inc.",
+      "fetchedAt": 1791531744958
+    },
+    "NVDA": {
+      "price": 230.48,
+      "currency": "USD",
+      "name": "NVIDIA Corporation",
+      "fetchedAt": 1791531745081
+    },
+    "ORCL": {
+      "price": 135.69,
+      "currency": "USD",
+      "name": "Oracle Corporation",
+      "fetchedAt": 1791531745204
+    },
+    "PLTR": {
+      "price": 198.78,
+      "currency": "USD",
+      "name": "Palantir Technologies Inc.",
+      "fetchedAt": 1791531745348
+    },
+    "SE": {
+      "price": 92.89,
+      "currency": "USD",
+      "name": "Sea Limited",
+      "fetchedAt": 1791531745464
+    },
+    "SOFI": {
+      "price": 15.61,
+      "currency": "USD",
+      "name": "SoFi Technologies, Inc.",
+      "fetchedAt": 1791531745575
+    },
+    "SPCX": {
+      "price": 160.57,
+      "currency": "USD",
+      "name": "Space Exploration Technologies Corp.",
+      "fetchedAt": 1791531745689
+    },
+    "TSLA": {
+      "price": 375.0,
+      "currency": "USD",
+      "name": "Tesla, Inc.",
+      "fetchedAt": 1791531745810
+    }
+  },
+  "errors": {
+    "5346.TW": "HTTP Error 404: Not Found"
+  }
+}
