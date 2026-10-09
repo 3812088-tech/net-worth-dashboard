@@ -1,10 +1,10 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "networth.holdings.v16";
-  const PRICES_KEY = "networth.prices.v16";
-  const FX_KEY = "networth.fx.v16";
-  const DEMO_FLAG_KEY = "networth.isDemo.v16";
+  const STORAGE_KEY = "networth.holdings.v17";
+  const PRICES_KEY = "networth.prices.v17";
+  const FX_KEY = "networth.fx.v17";
+  const DEMO_FLAG_KEY = "networth.isDemo.v17";
 
   const BROKERS = ["Firstrade", "國泰證券", "兆豐證券"];
   const MARKETS = ["台股", "美股", "其他"];
@@ -298,6 +298,14 @@ function loadState() {
     }
 
     const totalUsd = fxRate > 0 ? totalTwd / fxRate : null;
+    const stockRows = holdings.filter((h) => h.symbol !== "CASH-USD");
+    const stockPriced = stockRows.some((h) => marketValueTWD(h) != null);
+    if (stockRows.length && !stockPriced) {
+      totalTwdEl.textContent = "報價載入中…";
+      totalUsdEl.textContent = "—";
+      breakdownEl.innerHTML = "";
+      return;
+    }
     totalTwdEl.textContent = priced ? fmtMoney(totalTwd, "TWD") : "—";
     totalUsdEl.textContent = priced && totalUsd != null ? fmtMoney(totalUsd, "USD") : "—";
 
@@ -518,6 +526,16 @@ function loadState() {
     );
   }
 
+  async function fetchWithTimeout(url, ms = 8000) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), ms);
+    try {
+      return await fetch(url, { signal: ctrl.signal });
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
   function proxiedYahooUrl(symbol) {
     return CORS_PROXY + encodeURIComponent(yahooChartUrl(symbol));
   }
@@ -561,7 +579,7 @@ function loadState() {
     await Promise.all(
       symbols.slice(0, 40).map(async (sym) => {
         try {
-          const res = await fetch(proxiedYahooUrl(sym));
+          const res = await fetchWithTimeout(proxiedYahooUrl(sym));
           if (!res.ok) throw new Error("HTTP " + res.status);
           const data = await res.json();
           quotes[sym] = parseYahooChart(data, sym);
@@ -574,7 +592,7 @@ function loadState() {
   }
 
   async function fetchFxViaProxy() {
-    const res = await fetch(proxiedYahooUrl("USDTWD=X"));
+    const res = await fetchWithTimeout(proxiedYahooUrl("USDTWD=X"));
     if (!res.ok) throw new Error("HTTP " + res.status);
     const data = await res.json();
     const q = parseYahooChart(data, "USDTWD=X");
@@ -587,7 +605,7 @@ function loadState() {
   }
 
   async function fetchSnapshot() {
-    const res = await fetch("./prices-snapshot.json?t=" + Date.now());
+    const res = await fetchWithTimeout("./prices-snapshot.json?t=" + Date.now(), 10000);
     if (!res.ok) throw new Error("snapshot HTTP " + res.status);
     return res.json();
   }
@@ -623,15 +641,26 @@ function loadState() {
       if (!res.ok) throw new Error(data.error || res.statusText);
       return { quotes: data.quotes || {}, errors: data.errors || {} };
     }
+    let live = { quotes: {}, errors: {} };
     try {
-      const live = await fetchQuotesViaProxy(symbols);
-      const ok = Object.keys(live.quotes || {}).length;
-      if (ok > 0) return live;
+      live = await fetchQuotesViaProxy(symbols);
     } catch (_) {
       /* fall through to committed snapshot */
     }
-    const snap = await fetchSnapshot();
-    return quotesFromSnapshot(snap, symbols);
+    const missing = symbols.filter((s) => !(live.quotes[s] && live.quotes[s].price != null));
+    if (!missing.length) return live;
+    try {
+      const snap = await fetchSnapshot();
+      const fromSnap = quotesFromSnapshot(snap, missing);
+      return {
+        quotes: { ...live.quotes, ...fromSnap.quotes },
+        errors: fromSnap.errors,
+        fromSnapshot: missing.length > 0,
+        updatedAt: fromSnap.updatedAt,
+      };
+    } catch (_) {
+      return live;
+    }
   }
 
   async function fetchFxPayload() {
@@ -755,6 +784,32 @@ function loadState() {
   renderFx();
   renderTable();
 
+  // Seed missing prices from the committed snapshot immediately so totals never show only partial rows.
+  async function seedFromSnapshot() {
+    if (isLocalApiHost()) return;
+    try {
+      const snap = await fetchSnapshot();
+      const symbols = [...new Set(holdings.map((h) => h.symbol).filter((s) => s && s !== "CASH-USD"))];
+      const { quotes } = quotesFromSnapshot(snap, symbols);
+      const now = Date.now();
+      for (const sym of Object.keys(quotes)) {
+        const prev = priceCache[sym];
+        if (!prev || prev.price == null) {
+          priceCache[sym] = { price: quotes[sym].price, currency: quotes[sym].currency, name: quotes[sym].name, fetchedAt: now };
+        }
+      }
+      if (fxMeta.manual && snap.fx && snap.fx.rate) {
+        fxRate = Number(snap.fx.rate);
+        fxMeta = { source: (snap.fx.source || "snapshot") + " · " + (snap.updatedAtIso || ""), time: now, manual: false };
+        renderFx();
+      }
+      ensureCashPrice();
+      renderTable();
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
   // auto refresh on load
-  refreshFx().finally(() => refreshPrices());
+  seedFromSnapshot().finally(() => refreshFx().finally(() => refreshPrices()));
 })();
