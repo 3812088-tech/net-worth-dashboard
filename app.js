@@ -1,10 +1,10 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "networth.holdings.v11";
-  const PRICES_KEY = "networth.prices.v11";
-  const FX_KEY = "networth.fx.v11";
-  const DEMO_FLAG_KEY = "networth.isDemo.v11";
+  const STORAGE_KEY = "networth.holdings.v12";
+  const PRICES_KEY = "networth.prices.v12";
+  const FX_KEY = "networth.fx.v12";
+  const DEMO_FLAG_KEY = "networth.isDemo.v12";
 
   const BROKERS = ["Firstrade", "國泰證券", "兆豐證券"];
   const MARKETS = ["台股", "美股", "其他"];
@@ -32,39 +32,36 @@
 
   // 使用者持股（公開 repo，使用者同意）
   const USER_HOLDINGS = [
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "PLTR", name: "Palantir", quantity: 192, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "SE", name: "Sea Ltd", quantity: 147, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 23, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "SPCX", name: "SPCX ETF", quantity: 54.75463, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 17, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 5, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 10.16192, currency: "USD" },
-    { id: uid(), broker: "Firstrade", market: "美股", symbol: "MP", name: "MP Materials", quantity: 40, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "AAPL", name: "Apple", quantity: 1.37749, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "AMZN", name: "Amazon", quantity: 1.19881, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "GOOGL", name: "Alphabet", quantity: 1.61418, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "INDA", name: "iShares MSCI India ETF", quantity: 2.8069, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 0.45284, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "MSFT", name: "Microsoft", quantity: 0.90833, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "MU", name: "Micron", quantity: 0.02959, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "NFLX", name: "Netflix", quantity: 2.18898, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 2.60727, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "SPCX", name: "SPCX ETF", quantity: 0.14442, currency: "USD" },
-    { id: uid(), broker: "國泰證券", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 1.07873, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "PLTR", name: "Palantir", quantity: 180, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "SE", name: "Sea Ltd", quantity: 163, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 23.26478, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "SPCX", name: "Space Exploration Technologies", quantity: 54.38372, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 13.95076, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 6.5513, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "MP", name: "MP Materials", quantity: 46, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 8, currency: "USD" },
+    { id: uid(), broker: "Firstrade", market: "美股", symbol: "MSFT", name: "Microsoft", quantity: 3.16934, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "AAPL", name: "Apple", quantity: 1.40726, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "AMZN", name: "Amazon", quantity: 1.23905, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "GOOGL", name: "Alphabet", quantity: 1.64342, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 0.46587, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "MSFT", name: "Microsoft", quantity: 0.92839, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "MU", name: "Micron", quantity: 0.03872, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "NFLX", name: "Netflix", quantity: 2.32882, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 2.65171, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "SPCX", name: "Space Exploration Technologies", quantity: 0.40934, currency: "USD" },
+    { id: uid(), broker: "國泰證券", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 1.73278, currency: "USD" },
     { id: uid(), broker: "國泰證券", market: "台股", symbol: "006208.TW", name: "富邦台50", quantity: 18, currency: "TWD" },
     { id: uid(), broker: "國泰證券", market: "台股", symbol: "00662.TW", name: "富邦NASDAQ-100", quantity: 130, currency: "TWD" },
-    { id: uid(), broker: "兆豐證券", market: "台股", symbol: "006208.TW", name: "富邦台50", quantity: 525, currency: "TWD" },
+    { id: uid(), broker: "兆豐證券", market: "台股", symbol: "006208.TW", name: "富邦台50", quantity: 507, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "006208.TW", name: "富邦台50（質押）", quantity: 2000, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "00662.TW", name: "富邦NASDAQ-100（質押）", quantity: 1000, currency: "TWD" },
-    { id: uid(), broker: "兆豐證券", market: "台股", symbol: "3711.TW", name: "日月光投控", quantity: 14, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "5346.TW", name: "力成", quantity: 2423, currency: "TWD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 20, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 13, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "NFLX", name: "Netflix", quantity: 4, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "ORCL", name: "Oracle", quantity: 4, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "PLTR", name: "Palantir", quantity: 25, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "SE", name: "Sea Ltd", quantity: 23, currency: "USD" },
-    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "SOFI", name: "SoFi Technologies", quantity: 11, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "AVGO", name: "Broadcom", quantity: 6, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 15, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 11, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "NVDA", name: "NVIDIA", quantity: 1, currency: "USD" },
+    { id: uid(), broker: "兆豐證券", market: "美股", symbol: "SE", name: "Sea Ltd", quantity: 17, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "TSLA", name: "Tesla", quantity: 9, currency: "USD" },
   ];
 
