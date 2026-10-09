@@ -4,8 +4,7 @@ broker,market,symbol,quantity,currency,name
 兆豐證券,台股,00662.TW,1000,TWD,富邦NASDAQ-100（質押）
 兆豐證券,台股,5346.TW,2423,TWD,力成
 兆豐證券,美股,AVGO,6,USD,Broadcom
-兆豐證券,美股,GOOG,15,USD,Alphabet
+兆豐證券,美股,GOOG,12,USD,Alphabet
 兆豐證券,美股,META,11,USD,Meta Platforms
 兆豐證券,美股,NVDA,1,USD,NVIDIA
-兆豐證券,美股,SE,17,USD,Sea Ltd
 兆豐證券,美股,TSLA,9,USD,Tesla
