@@ -1,10 +1,10 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "networth.holdings.v17";
-  const PRICES_KEY = "networth.prices.v17";
-  const FX_KEY = "networth.fx.v17";
-  const DEMO_FLAG_KEY = "networth.isDemo.v17";
+  const STORAGE_KEY = "networth.holdings.v18";
+  const PRICES_KEY = "networth.prices.v18";
+  const FX_KEY = "networth.fx.v18";
+  const DEMO_FLAG_KEY = "networth.isDemo.v18";
 
   const BROKERS = ["Firstrade", "國泰證券", "兆豐證券"];
   const MARKETS = ["台股", "美股", "其他"];
@@ -57,7 +57,6 @@
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "006208.TW", name: "富邦台50", quantity: 507, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "006208.TW", name: "富邦台50（質押）", quantity: 2000, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "台股", symbol: "00662.TW", name: "富邦NASDAQ-100（質押）", quantity: 1000, currency: "TWD" },
-    { id: uid(), broker: "兆豐證券", market: "台股", symbol: "5346.TW", name: "力成", quantity: 2423, currency: "TWD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "AVGO", name: "Broadcom", quantity: 6, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "GOOG", name: "Alphabet", quantity: 12, currency: "USD" },
     { id: uid(), broker: "兆豐證券", market: "美股", symbol: "META", name: "Meta Platforms", quantity: 6, currency: "USD" },
