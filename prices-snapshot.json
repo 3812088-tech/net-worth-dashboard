@@ -1,114 +1,114 @@
 {
-  "updatedAt": 1792307628172,
-  "updatedAtIso": "2026-10-18T15:13:48+0800",
+  "updatedAt": 1792404234546,
+  "updatedAtIso": "2026-10-19T18:03:54+0800",
   "fx": {
     "pair": "USD/TWD",
-    "rate": 32.428,
+    "rate": 32.434,
     "source": "Yahoo Finance USDTWD=X",
     "name": "USD/TWD"
   },
   "quotes": {
     "006208.TW": {
-      "price": 250.35,
+      "price": 247.9,
       "currency": "TWD",
       "name": "Fubon FTSE TWSE Taiwan 50 ETF",
-      "fetchedAt": 1792307625939
+      "fetchedAt": 1792404232348
     },
     "00662.TW": {
-      "price": 124.95,
+      "price": 123.4,
       "currency": "TWD",
       "name": "Fubon NASDAQ-100 Index ETF",
-      "fetchedAt": 1792307626043
+      "fetchedAt": 1792404232458
     },
     "AAPL": {
       "price": 343.46,
       "currency": "USD",
       "name": "Apple Inc.",
-      "fetchedAt": 1792307626170
+      "fetchedAt": 1792404232601
     },
     "AMZN": {
       "price": 250.0,
       "currency": "USD",
       "name": "Amazon.com, Inc.",
-      "fetchedAt": 1792307626257
+      "fetchedAt": 1792404232723
     },
     "AVGO": {
       "price": 328.75,
       "currency": "USD",
       "name": "Broadcom Inc.",
-      "fetchedAt": 1792307626354
+      "fetchedAt": 1792404232849
     },
     "GOOG": {
       "price": 336.91,
       "currency": "USD",
       "name": "Alphabet Inc.",
-      "fetchedAt": 1792307626577
+      "fetchedAt": 1792404233109
     },
     "GOOGL": {
       "price": 340.59,
       "currency": "USD",
       "name": "Alphabet Inc.",
-      "fetchedAt": 1792307626686
+      "fetchedAt": 1792404233223
     },
     "META": {
       "price": 709.325,
       "currency": "USD",
       "name": "Meta Platforms, Inc.",
-      "fetchedAt": 1792307626800
+      "fetchedAt": 1792404233342
     },
     "MP": {
       "price": 40.17,
       "currency": "USD",
       "name": "MP Materials Corp.",
-      "fetchedAt": 1792307627106
+      "fetchedAt": 1792404233453
     },
     "MSFT": {
       "price": 529.05,
       "currency": "USD",
       "name": "Microsoft Corporation",
-      "fetchedAt": 1792307627225
+      "fetchedAt": 1792404233557
     },
     "MU": {
       "price": 878.84,
       "currency": "USD",
       "name": "Micron Technology, Inc.",
-      "fetchedAt": 1792307627350
+      "fetchedAt": 1792404233697
     },
     "NFLX": {
       "price": 70.53,
       "currency": "USD",
       "name": "Netflix, Inc.",
-      "fetchedAt": 1792307627463
+      "fetchedAt": 1792404233819
     },
     "NVDA": {
       "price": 214.13,
       "currency": "USD",
       "name": "NVIDIA Corporation",
-      "fetchedAt": 1792307627580
+      "fetchedAt": 1792404233944
     },
     "PLTR": {
       "price": 186.03,
       "currency": "USD",
       "name": "Palantir Technologies Inc.",
-      "fetchedAt": 1792307627686
+      "fetchedAt": 1792404234038
     },
     "SE": {
       "price": 93.77,
       "currency": "USD",
       "name": "Sea Limited",
-      "fetchedAt": 1792307627788
+      "fetchedAt": 1792404234155
     },
     "SPCX": {
       "price": 146.03,
       "currency": "USD",
       "name": "Space Exploration Technologies Corp.",
-      "fetchedAt": 1792307627920
+      "fetchedAt": 1792404234272
     },
     "TSLA": {
       "price": 354.72,
       "currency": "USD",
       "name": "Tesla, Inc.",
-      "fetchedAt": 1792307628064
+      "fetchedAt": 1792404234389
     }
   },
   "errors": {
